@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Email</title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <fieldset>
+            <legend>Email</legend>
+            <input type="text" name="email" id="email" value="">
+            <p id="msg"></p>
+            <input type="submit" name="submit" id="submit" value="Submit" >
+        </fieldset>
+        
+    </form>
+    <script>
+        
+        function validate() {
+            let email = document.getElementById('email').value;
+            let msg = document.getElementById('msg');
+            let atSymbolIndex = email.indexOf('@');
+            let dotIndex = email.lastIndexOf('.');
+
+            if (email === "") {
+                msg.innerHTML = "Please enter your email!";
+                msg.style.color = 'red';
+                return false;
+            } 
+
+            if (email.split('@').length !== 2 || dotIndex === -1 || atSymbolIndex <= 0 || dotIndex <= atSymbolIndex + 1 || dotIndex >= email.length - 1) {
+                msg.innerHTML = "Please enter a valid email address in the format 'example@domain.com'.";
+                msg.style.color = 'red';
+                return false;
+            } 
+            return true;
+        }
+    </script>
+</body>
+</html>

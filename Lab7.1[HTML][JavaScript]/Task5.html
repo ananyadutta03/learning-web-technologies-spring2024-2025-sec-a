@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Checkbox </title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <fieldset>
+            <legend>Degree</legend>
+            <input type="checkbox" name="degree[]" id="" value=""/>SSC 
+            <input type="checkbox" name="degree[]" id="" value=""/>HSC
+            <input type="checkbox" name="degree[]" id="" value=""/>BSc 
+            <input type="checkbox" name="degree[]" id="" value=""/>MSc <br>
+            <p id="msg"></p>
+            <input type="submit" name="submit" id="submit" value="Submit" >
+        </fieldset>
+    </form>
+    <script>
+        function validate() {
+            let gender = document.querySelector('input[name="degree[]"]:checked')
+            let msg = document.getElementById('msg');
+
+            if(gender === null) {
+                msg.innerHTML = "At least one of them has to be selected";
+                msg.style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

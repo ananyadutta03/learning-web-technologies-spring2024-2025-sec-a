@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Radio button </title>
+</head>
+<body>
+    <form onsubmit="return validate()">
+        <fieldset>
+            <legend>Gender</legend> 
+            <input type="radio" name="gender" id="gender" value="">Male
+            <input type="radio" name="gender" id="gender" value="">Female
+            <input type="radio" name="gender" id="gender" value="">Others
+            <p id="msg"></p>
+            <input type="submit" name="submit" id="submit" value="Submit" >
+        </fieldset>
+    </form>
+    <script>
+        
+        function validate() {
+            let gender = document.querySelector('input[name="gender"]:checked')
+            let gmsg = document.getElementById('msg');
+
+            if(gender === null) {
+                gmsg.innerHTML = "At least one of them has to be selected";
+                gmsg.style.color = 'red';
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html lan bg="en">
+<head>
+   <title>Test Page</title>
+</head>
+<body>
+    <form action="home.html"onsubmit="return validate()">
+        <h1 id = "head">Test Page</h1>
+        <input type = "text" name = "username" id="username" value = "" />
+        <p id="umsg"></p>
+        <input type = "password" name = "password" id="password" value = "" /> 
+        <p id="pmsg"></p>
+        <input type="submit" name="submit" id="submit" value="submit" />
+        <p id="vmsg"></p>
+
+    </form>
+   
+   <script>
+    
+    function validate() {
+        //validate username(null check)
+        let username = document.getElementById("username").value;
+        let umsg = document.getElementById('umsg');
+        if(username == ""){
+            msg.innerHTML = "Please enter a username";
+            msg.style.color = "red";
+        }else{ 
+            document.getElementById('username').innerHTML = username;
+            umsg.innerHTML = "";
+        }
+        //validate password(null check)
+        let password = document.getElementById("password").value;
+        let pmsg = document.getElementById('pmsg');
+        if(password == ""){
+            pmsg.innerHTML = "Please enter your password";
+            pmsg.style.color = "red";
+        }else{ 
+            document.getElementById('username').innerHTML = username;
+            pmsg.innerHTML = "";
+        }
+        //validate email(null check)
+        if (username !== password)
+        {
+                vmsg.innerHTML = "Username and password should be the same";
+                vmsg.style.color = 'red';
+                return false;
+        }
+        return true;
+    
+}
+       
+   </script>
+</body>
+</html>
