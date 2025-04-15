@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <title>Basic Calculator</title>
+</head>
+<body>
+    <h1 id="calcTitle">My Calculator</h1>
+    <div id="calculator"></div>
+    <script>
+        function makeCalculator() {                                     // calculator function
+            let calc = document.getElementById('calculator');
+            // Set width
+            calc.style.width = '200px';
+            calc.style.padding = '10px';
+            let display = document.createElement('input');              // input for display
+            display.type = 'text';
+            display.id = 'display';
+            display.value = '0';
+            display.style.width = '100%';                               // Full width
+            calc.appendChild(display);
+            calc.appendChild(document.createElement('br'));            // Add line break
+            
+            // All buttons
+            let buttons = ['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', 'C', '=', '+'];
+            
+            // Make buttons
+            for (let i = 0; i < buttons.length; i++) {
+                let btn = document.createElement('input');
+                btn.type = 'button';
+                btn.value = buttons[i];
+                btn.style.width = '23%';                             // full width
+                btn.style.margin = '1%';                             // Small gap
+                btn.onclick = function() {                            // Button click e value txt box e jabe
+                    clickButton(buttons[i]);
+                };
+                calc.appendChild(btn);
+                
+                if ((i + 1) % 4 == 0) {                                 //for 4 button per line 
+                    calc.appendChild(document.createElement('br'));
+                }
+            }
+        }
+        
+        function clickButton(val) {                                          // When button is click kora hobe 
+            let display = document.getElementById('display');
+            
+            if (val == 'C') {                                                // display value  means text box clean hoi jabe
+                display.value = '0';      
+            }
+            else if (val == '=') {                                            // txt box answer hobe
+                display.value = eval(display.value);
+            }
+            else {
+                if (display.value == '0') {
+                    display.value = val;
+                } else {
+                    display.value = display.value + val;
+                }
+            }
+        }
+        
+        // Start calculator
+        makeCalculator();
+    </script>
+</body>
+</html>
